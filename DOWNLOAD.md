@@ -39,7 +39,7 @@ sudo apt-get install git
 
 ```bash
 # Clone o repositório
-git clone https://github.com/projetospyton2025/AnalisePorPosicao-MaisMilionaria.git
+git clone https://github.com/projetospython2025/AnalisePorPosicao-MaisMilionaria.git
 
 # Entre no diretório
 cd AnalisePorPosicao-MaisMilionaria
@@ -47,7 +47,7 @@ cd AnalisePorPosicao-MaisMilionaria
 
 ## 🔽 Opção 2: Download Direto (ZIP)
 
-1. Acesse: https://github.com/projetospyton2025/AnalisePorPosicao-MaisMilionaria
+1. Acesse: https://github.com/projetospython2025/AnalisePorPosicao-MaisMilionaria
 2. Clique em **"Code"** → **"Download ZIP"**
 3. Extraia o arquivo ZIP
 4. Abra o terminal/prompt na pasta extraída
