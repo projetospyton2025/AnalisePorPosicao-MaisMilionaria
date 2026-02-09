@@ -1,8 +1,19 @@
-# 🍀 Sistema de Análise por Posição - +MILIONÁRIA
+# 🍀 Sistema de Análise por Posição - +MILIONÁRIA & DUPLA SENA
 
-Sistema completo de análise estatística e geração de palpites inteligentes para a loteria **+MILIONÁRIA** da Caixa Econômica Federal.
+Sistema completo de análise estatística e geração de palpites inteligentes para as loterias **+MILIONÁRIA** e **DUPLA SENA** da Caixa Econômica Federal.
 
 ![+Milionária Logo](https://i.postimg.cc/DywMFvD1/mais-Milionaria.png)
+
+## 🎲 Novidade: Análise Dupla Sena
+
+**NOVO!** Agora com suporte completo para **DUPLA SENA**! 
+
+- ✅ API REST completa para Dupla Sena
+- ✅ Análise estatística dos dois sorteios independentes
+- ✅ Geração de palpites inteligentes
+- ✅ Conferência de jogos
+
+📖 **[Veja a documentação completa da Dupla Sena →](DUPLASENA.md)**
 
 ## 📋 Características
 
