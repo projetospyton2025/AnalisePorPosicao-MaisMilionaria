@@ -6,7 +6,7 @@ Comece a usar o sistema em **3 minutos**!
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/projetospyton2025/AnalisePorPosicao-MaisMilionaria.git
+git clone https://github.com/projetospython2025/AnalisePorPosicao-MaisMilionaria.git
 cd AnalisePorPosicao-MaisMilionaria
 
 # 2. Instale as dependências

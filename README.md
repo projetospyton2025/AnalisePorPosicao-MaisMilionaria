@@ -43,7 +43,7 @@ A +Milionária é ÚNICA porque combina DOIS elementos independentes:
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/projetospyton2025/AnalisePorPosicao-MaisMilionaria.git
+git clone https://github.com/projetospython2025/AnalisePorPosicao-MaisMilionaria.git
 cd AnalisePorPosicao-MaisMilionaria
 ```
 
