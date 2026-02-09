@@ -66,14 +66,14 @@ class EstatisticaDuplaSenaService:
             for dezena in resultado[campo]:
                 contador[int(dezena)] += 1
         
-        # Calcular total de sorteios
-        total_sorteios = len(resultados) * Config.DUPLASENA_NUMEROS_SORTEADOS
+        # Calcular total de concursos para percentual
+        total_concursos = len(resultados)
         
         # Criar lista de frequências
         frequencias = []
         for numero in range(Config.DUPLASENA_MIN_NUMEROS, Config.DUPLASENA_MAX_NUMEROS + 1):
             vezes = contador.get(numero, 0)
-            percentual = (vezes / total_sorteios * 100) if total_sorteios > 0 else 0
+            percentual = (vezes / total_concursos * 100) if total_concursos > 0 else 0
             
             frequencias.append({
                 'numero': numero,

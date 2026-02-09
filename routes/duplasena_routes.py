@@ -3,13 +3,15 @@ Rotas da API REST - Dupla Sena
 """
 from flask import Blueprint, jsonify, request
 from services import ApiDuplaSenaService, EstatisticaDuplaSenaService, DuplaSenaService
+from models import DuplaSenaModel
 
 duplasena_bp = Blueprint('duplasena', __name__, url_prefix='/api/duplasena')
 
-# Inicializar serviços
+# Inicializar serviços e model
 api_duplasena = ApiDuplaSenaService()
 estatistica = EstatisticaDuplaSenaService()
 duplasena = DuplaSenaService()
+model = DuplaSenaModel()
 
 
 @duplasena_bp.route('/atualizar', methods=['POST'])
@@ -48,8 +50,6 @@ def atualizar_ultimos():
 def ultimo_resultado():
     """Retorna o último resultado"""
     try:
-        from models import DuplaSenaModel
-        model = DuplaSenaModel()
         resultado = model.buscar_ultimo_resultado()
         
         if resultado:
@@ -75,8 +75,6 @@ def resultados():
     try:
         limite = request.args.get('limite', 100, type=int)
         
-        from models import DuplaSenaModel
-        model = DuplaSenaModel()
         lista = model.listar_resultados(limite)
         
         return jsonify({
@@ -95,8 +93,6 @@ def resultados():
 def resultado(numero):
     """Retorna um resultado específico"""
     try:
-        from models import DuplaSenaModel
-        model = DuplaSenaModel()
         res = model.buscar_resultado(numero)
         
         if res:

@@ -42,10 +42,8 @@ class DuplaSenaService:
             # Gerar números baseado na estratégia
             if estrategia == 'agressiva':
                 numeros = self._gerar_numeros_agressivos(quantidade_numeros)
-            elif estrategia == 'conservadora':
+            elif estrategia == 'conservadora' or estrategia == 'atrasados':
                 numeros = self._gerar_numeros_conservadores(quantidade_numeros)
-            elif estrategia == 'atrasados':
-                numeros = self._gerar_numeros_atrasados(quantidade_numeros)
             elif estrategia == 'por_faixa':
                 numeros = self._gerar_numeros_por_faixa(quantidade_numeros)
             else:  # equilibrada ou mista
@@ -128,10 +126,6 @@ class DuplaSenaService:
             pool.extend([n for n in todos if n not in pool])
         
         return random.sample(pool, min(quantidade, len(pool)))
-    
-    def _gerar_numeros_atrasados(self, quantidade: int) -> List[int]:
-        """Gera números com maior atraso"""
-        return self._gerar_numeros_conservadores(quantidade)
     
     def _gerar_numeros_por_faixa(self, quantidade: int) -> List[int]:
         """Distribui números por faixas"""

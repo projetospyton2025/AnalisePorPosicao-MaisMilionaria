@@ -81,6 +81,9 @@ class ApiDuplaSenaService:
             if resultado:
                 if self.model.inserir_resultado(resultado):
                     inseridos += 1
+                    # Log progress every 10 concursos
+                    if inseridos % 10 == 0:
+                        print(f"Dupla Sena: {inseridos} concursos inseridos...")
                 else:
                     erros += 1
             else:
