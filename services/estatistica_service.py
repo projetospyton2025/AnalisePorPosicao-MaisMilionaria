@@ -90,19 +90,18 @@ class EstatisticaService:
         if not resultados:
             return []
         
-        # Calcular atraso
+        # Calcular atraso - quantos concursos cada número ficou sem aparecer
         atrasos = {}
         for numero in range(Config.MIN_NUMEROS, Config.MAX_NUMEROS + 1):
-            atrasos[numero] = 0
-        
-        # Percorrer resultados do mais recente ao mais antigo
-        for resultado in resultados:
-            dezenas = [int(d) for d in resultado['listaDezenas']]
-            
-            for numero in range(Config.MIN_NUMEROS, Config.MAX_NUMEROS + 1):
+            # Encontrar primeiro concurso onde o número apareceu
+            for i, resultado in enumerate(resultados):
+                dezenas = [int(d) for d in resultado['listaDezenas']]
                 if numero in dezenas:
+                    atrasos[numero] = i
                     break
-                atrasos[numero] += 1
+            else:
+                # Número nunca apareceu
+                atrasos[numero] = len(resultados)
         
         # Criar lista de atrasos
         lista_atrasos = []
@@ -271,19 +270,18 @@ class EstatisticaService:
         if not resultados:
             return []
         
-        # Calcular atraso
+        # Calcular atraso - quantos concursos cada trevo ficou sem aparecer
         atrasos = {}
         for trevo in range(Config.MIN_TREVOS, Config.MAX_TREVOS + 1):
-            atrasos[trevo] = 0
-        
-        # Percorrer resultados do mais recente ao mais antigo
-        for resultado in resultados:
-            trevos_sorteados = [int(t) for t in resultado['trevosSorteados']]
-            
-            for trevo in range(Config.MIN_TREVOS, Config.MAX_TREVOS + 1):
+            # Encontrar primeiro concurso onde o trevo apareceu
+            for i, resultado in enumerate(resultados):
+                trevos_sorteados = [int(t) for t in resultado['trevosSorteados']]
                 if trevo in trevos_sorteados:
+                    atrasos[trevo] = i
                     break
-                atrasos[trevo] += 1
+            else:
+                # Trevo nunca apareceu
+                atrasos[trevo] = len(resultados)
         
         # Criar lista de atrasos
         lista_atrasos = []
