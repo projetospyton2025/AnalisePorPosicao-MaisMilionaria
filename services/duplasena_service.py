@@ -5,7 +5,7 @@ import random
 from typing import Dict, List
 from services.estatistica_duplasena_service import EstatisticaDuplaSenaService
 from models import DuplaSenaModel
-from config import Config
+from config import ConfigDuplaSena
 
 
 class DuplaSenaService:
@@ -34,7 +34,7 @@ class DuplaSenaService:
             Dicionário com palpites gerados
         """
         # Validar parâmetros
-        quantidade_numeros = max(Config.DUPLASENA_MIN_JOGO, min(quantidade_numeros, Config.DUPLASENA_MAX_JOGO))
+        quantidade_numeros = max(ConfigDuplaSena.DUPLASENA_MIN_JOGO, min(quantidade_numeros, ConfigDuplaSena.DUPLASENA_MAX_JOGO))
         
         jogos = []
         
@@ -89,7 +89,7 @@ class DuplaSenaService:
         
         # Completar se necessário
         while len(numeros) < quantidade:
-            numeros.add(random.randint(Config.DUPLASENA_MIN_NUMEROS, Config.DUPLASENA_MAX_NUMEROS))
+            numeros.add(random.randint(ConfigDuplaSena.DUPLASENA_MIN_NUMEROS, ConfigDuplaSena.DUPLASENA_MAX_NUMEROS))
         
         return list(numeros)[:quantidade]
     
@@ -105,7 +105,7 @@ class DuplaSenaService:
         
         if len(pool) < quantidade:
             # Adicionar mais números se necessário
-            todos = list(range(Config.DUPLASENA_MIN_NUMEROS, Config.DUPLASENA_MAX_NUMEROS + 1))
+            todos = list(range(ConfigDuplaSena.DUPLASENA_MIN_NUMEROS, ConfigDuplaSena.DUPLASENA_MAX_NUMEROS + 1))
             pool.extend([n for n in todos if n not in pool])
         
         return random.sample(pool, min(quantidade, len(pool)))
@@ -122,7 +122,7 @@ class DuplaSenaService:
         
         if len(pool) < quantidade:
             # Adicionar mais números se necessário
-            todos = list(range(Config.DUPLASENA_MIN_NUMEROS, Config.DUPLASENA_MAX_NUMEROS + 1))
+            todos = list(range(ConfigDuplaSena.DUPLASENA_MIN_NUMEROS, ConfigDuplaSena.DUPLASENA_MAX_NUMEROS + 1))
             pool.extend([n for n in todos if n not in pool])
         
         return random.sample(pool, min(quantidade, len(pool)))
@@ -150,7 +150,7 @@ class DuplaSenaService:
         
         # Completar se necessário
         while len(numeros) < quantidade:
-            numeros.add(random.randint(Config.DUPLASENA_MIN_NUMEROS, Config.DUPLASENA_MAX_NUMEROS))
+            numeros.add(random.randint(ConfigDuplaSena.DUPLASENA_MIN_NUMEROS, ConfigDuplaSena.DUPLASENA_MAX_NUMEROS))
         
         return list(numeros)[:quantidade]
     

@@ -1,5 +1,14 @@
 # 🎲 Sistema de Análise por Posição - DUPLA SENA
 
+## ⚠️ MODALIDADE SEPARADA E INDEPENDENTE
+
+**A Dupla Sena agora é uma MODALIDADE COMPLETAMENTE SEPARADA da +Milionária!**
+
+- ✅ **Aplicação própria**: `app_duplasena.py`
+- ✅ **Porta independente**: 5060 (padrão)
+- ✅ **Banco de dados próprio**: `duplasena.db`
+- ✅ **Configuração independente**: `ConfigDuplaSena`
+
 Sistema completo de análise estatística e geração de palpites inteligentes para a loteria **DUPLA SENA** da Caixa Econômica Federal.
 
 ## 📋 Características da Dupla Sena
@@ -30,19 +39,48 @@ A Dupla Sena é única porque possui **DOIS SORTEIOS INDEPENDENTES**:
 
 ### Instalação
 
-O sistema Dupla Sena está integrado ao sistema principal. Siga as instruções do [README.md](README.md) principal para instalar.
-
-### Executar a Aplicação
-
+1. Clone o repositório:
 ```bash
-python app.py
+git clone https://github.com/projetospyton2025/AnalisePorPosicao-MaisMilionaria.git
+cd AnalisePorPosicao-MaisMilionaria
 ```
 
-O servidor estará disponível em: `http://localhost:5059`
+2. Instale as dependências:
+```bash
+pip install -r requirements.txt
+```
+
+### Executar a Aplicação Dupla Sena (SEPARADA)
+
+**IMPORTANTE:** A Dupla Sena roda em sua própria aplicação!
+
+```bash
+# Opção 1: Diretamente
+python app_duplasena.py
+
+# Opção 2: Com script de execução
+python run_duplasena.py
+```
+
+O servidor estará disponível em: `http://localhost:5060`
+
+### Executar Ambas as Modalidades Simultaneamente
+
+Você pode rodar **+Milionária** e **Dupla Sena** ao mesmo tempo:
+
+```bash
+# Terminal 1 - +Milionária (porta 5059)
+python app.py
+
+# Terminal 2 - Dupla Sena (porta 5060)
+python app_duplasena.py
+```
 
 ## 📡 API REST - Dupla Sena
 
 Todos os endpoints da Dupla Sena estão sob o prefixo `/api/duplasena/`
+
+**Base URL**: `http://localhost:5060`
 
 ### Endpoints Disponíveis
 
@@ -210,7 +248,7 @@ A Dupla Sena possui 4 faixas de premiação **por sorteio**:
 import requests
 
 # Gerar palpite
-response = requests.post('http://localhost:5059/api/duplasena/gerar-palpite', json={
+response = requests.post('http://localhost:5060/api/duplasena/gerar-palpite', json={
     'estrategia': 'equilibrada',
     'quantidade_numeros': 6,
     'quantidade_jogos': 1
@@ -219,7 +257,7 @@ palpite = response.json()
 print(palpite['jogos'][0]['numeros'])
 
 # Buscar estatísticas
-response = requests.get('http://localhost:5059/api/duplasena/estatisticas/sorteio/1')
+response = requests.get('http://localhost:5060/api/duplasena/estatisticas/sorteio/1')
 stats = response.json()
 print(stats['estatisticas']['frequencia'][:10])  # Top 10 números mais frequentes
 ```
@@ -228,7 +266,7 @@ print(stats['estatisticas']['frequencia'][:10])  # Top 10 números mais frequent
 
 ```javascript
 // Gerar palpite
-fetch('http://localhost:5059/api/duplasena/gerar-palpite', {
+fetch('http://localhost:5060/api/duplasena/gerar-palpite', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -241,7 +279,7 @@ fetch('http://localhost:5059/api/duplasena/gerar-palpite', {
 .then(data => console.log(data.jogos));
 
 // Conferir jogo
-fetch('http://localhost:5059/api/duplasena/conferir', {
+fetch('http://localhost:5060/api/duplasena/conferir', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -260,17 +298,17 @@ fetch('http://localhost:5059/api/duplasena/conferir', {
 
 ```bash
 # Atualizar base de dados
-curl -X POST http://localhost:5059/api/duplasena/atualizar-ultimos \
+curl -X POST http://localhost:5060/api/duplasena/atualizar-ultimos \
   -H "Content-Type: application/json" \
   -d '{"quantidade": 50}'
 
 # Gerar palpites
-curl -X POST http://localhost:5059/api/duplasena/gerar-palpite \
+curl -X POST http://localhost:5060/api/duplasena/gerar-palpite \
   -H "Content-Type: application/json" \
   -d '{"estrategia": "agressiva", "quantidade_numeros": 6, "quantidade_jogos": 5}'
 
 # Ver estatísticas
-curl http://localhost:5059/api/duplasena/estatisticas/gerais
+curl http://localhost:5060/api/duplasena/estatisticas/gerais
 ```
 
 ## 🔧 Estrutura do Projeto

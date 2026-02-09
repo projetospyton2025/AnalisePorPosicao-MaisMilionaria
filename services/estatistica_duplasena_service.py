@@ -4,7 +4,7 @@ Serviço de estatísticas para Dupla Sena
 from typing import Dict, List
 from collections import Counter
 from models import DuplaSenaModel
-from config import Config
+from config import ConfigDuplaSena
 
 
 class EstatisticaDuplaSenaService:
@@ -71,7 +71,7 @@ class EstatisticaDuplaSenaService:
         
         # Criar lista de frequências
         frequencias = []
-        for numero in range(Config.DUPLASENA_MIN_NUMEROS, Config.DUPLASENA_MAX_NUMEROS + 1):
+        for numero in range(ConfigDuplaSena.DUPLASENA_MIN_NUMEROS, ConfigDuplaSena.DUPLASENA_MAX_NUMEROS + 1):
             vezes = contador.get(numero, 0)
             percentual = (vezes / total_concursos * 100) if total_concursos > 0 else 0
             
@@ -106,7 +106,7 @@ class EstatisticaDuplaSenaService:
         
         # Calcular atraso
         atrasos = {}
-        for numero in range(Config.DUPLASENA_MIN_NUMEROS, Config.DUPLASENA_MAX_NUMEROS + 1):
+        for numero in range(ConfigDuplaSena.DUPLASENA_MIN_NUMEROS, ConfigDuplaSena.DUPLASENA_MAX_NUMEROS + 1):
             for i, resultado in enumerate(resultados):
                 dezenas = [int(d) for d in resultado[campo]]
                 if numero in dezenas:
@@ -217,12 +217,12 @@ class EstatisticaDuplaSenaService:
         # Determinar campo correto
         campo = 'listaDezenasSorteio1' if sorteio == 1 else 'listaDezenasSorteio2'
         
-        posicoes = {i: [] for i in range(Config.DUPLASENA_NUMEROS_SORTEADOS)}
+        posicoes = {i: [] for i in range(ConfigDuplaSena.DUPLASENA_NUMEROS_SORTEADOS)}
         
         for resultado in resultados:
             dezenas = sorted([int(d) for d in resultado[campo]])
             for i, numero in enumerate(dezenas):
-                if i < Config.DUPLASENA_NUMEROS_SORTEADOS:
+                if i < ConfigDuplaSena.DUPLASENA_NUMEROS_SORTEADOS:
                     posicoes[i].append(numero)
         
         estatisticas = {}

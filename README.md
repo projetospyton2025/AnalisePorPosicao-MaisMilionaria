@@ -1,19 +1,35 @@
-# 🍀 Sistema de Análise por Posição - +MILIONÁRIA & DUPLA SENA
+# 🍀 Sistema de Análise por Posição - +MILIONÁRIA
 
-Sistema completo de análise estatística e geração de palpites inteligentes para as loterias **+MILIONÁRIA** e **DUPLA SENA** da Caixa Econômica Federal.
+Sistema completo de análise estatística e geração de palpites inteligentes para a loteria **+MILIONÁRIA** da Caixa Econômica Federal.
 
 ![+Milionária Logo](https://i.postimg.cc/DywMFvD1/mais-Milionaria.png)
 
-## 🎲 Novidade: Análise Dupla Sena
+## 🎲 Dupla Sena - Modalidade Separada
 
-**NOVO!** Agora com suporte completo para **DUPLA SENA**! 
+**IMPORTANTE:** A **DUPLA SENA** agora é uma **modalidade SEPARADA** com sua própria aplicação independente!
 
-- ✅ API REST completa para Dupla Sena
-- ✅ Análise estatística dos dois sorteios independentes
-- ✅ Geração de palpites inteligentes
-- ✅ Conferência de jogos
+- ✅ Aplicação independente em `app_duplasena.py`
+- ✅ Porta separada (5060 por padrão)
+- ✅ Banco de dados separado
+- ✅ Configuração independente
 
 📖 **[Veja a documentação completa da Dupla Sena →](DUPLASENA.md)**
+
+### Como Executar Cada Modalidade
+
+```bash
+# Executar +Milionária (porta 5059)
+python app.py
+# ou
+python run_maismilionaria.py
+
+# Executar Dupla Sena (porta 5060) - SEPARADAMENTE
+python app_duplasena.py
+# ou
+python run_duplasena.py
+```
+
+**Ambas podem rodar simultaneamente em portas diferentes!**
 
 ## 📋 Características
 

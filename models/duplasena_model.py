@@ -4,7 +4,7 @@ Model para armazenamento de resultados da Dupla Sena
 import sqlite3
 import json
 from typing import List, Dict, Optional
-from config import Config
+from config import ConfigDuplaSena
 
 
 class DuplaSenaModel:
@@ -17,7 +17,7 @@ class DuplaSenaModel:
         Args:
             db_path: Caminho para o banco de dados
         """
-        self.db_path = db_path or Config.DATABASE_PATH_DUPLASENA
+        self.db_path = db_path or ConfigDuplaSena.DATABASE_PATH_DUPLASENA
         self._criar_tabela()
     
     def _criar_tabela(self):

@@ -3,7 +3,7 @@ Serviço para integração com a API da Caixa - Dupla Sena
 """
 import requests
 from typing import Dict, Optional
-from config import Config
+from config import ConfigDuplaSena
 from models import DuplaSenaModel
 
 
@@ -12,7 +12,7 @@ class ApiDuplaSenaService:
     
     def __init__(self):
         """Inicializa o serviço"""
-        self.api_url = Config.API_DUPLASENA_URL
+        self.api_url = ConfigDuplaSena.API_DUPLASENA_URL
         self.model = DuplaSenaModel()
     
     def buscar_ultimo_concurso(self) -> Optional[Dict]:
