@@ -243,6 +243,39 @@ Para dúvidas ou problemas:
 2. Procure em issues existentes
 3. Abra uma nova issue se necessário
 
+## 🎲 Sistemas Relacionados
+
+### Dupla Sena - Sistema Completo Disponível!
+
+Também foi desenvolvido um sistema completo para a **Dupla Sena** com características únicas:
+
+🔗 **Repositório**: https://github.com/projetospyton2025/AnalisePorPosicao-DuplaSena
+
+**Características Especiais**:
+- 🎲🎲 **DOIS sorteios por concurso** (primeiro e segundo)
+- 📊 **Análises separadas** para cada sorteio
+- 🎯 **Palpites independentes** para ambos
+- 🏆 **8 faixas de premiação** (4 por sorteio)
+- 🎨 **Tema rosa/vermelho** (#BA184A)
+- 🚀 **Porta 5060** (pode rodar simultaneamente!)
+
+**Quick Start Dupla Sena**:
+```bash
+git clone https://github.com/projetospyton2025/AnalisePorPosicao-DuplaSena.git
+cd AnalisePorPosicao-DuplaSena
+pip install -r requirements.txt
+python app.py
+# Acesse: http://localhost:5060
+```
+
+**Veja também**: [LOCALIZACAO-SISTEMAS.md](LOCALIZACAO-SISTEMAS.md) para detalhes completos.
+
+### Outros Sistemas
+
+- **Mega-Sena**: https://github.com/projetospyton2025/AnalisePorPosicao-MegaSena
+- **Timemania**: https://github.com/projetospyton2025/AnalisePorPosicao-TimeMania
+- **Lotofácil**: https://github.com/projetospyton2025/AnalisePorPosicao-Lotofacil
+
 ## ⚠️ Aviso Legal
 
 Este sistema é apenas para análise estatística e entretenimento. Não há garantia de ganhos. Jogue com responsabilidade.
