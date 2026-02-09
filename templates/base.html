@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}+Milionária - Análise por Posição{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="https://i.postimg.cc/DywMFvD1/mais-Milionaria.png" alt="+Milionária Logo" class="logo">
+                    <h1>Sistema de Análise +Milionária</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="{{ url_for('main.index') }}" class="{% if request.endpoint == 'main.index' %}active{% endif %}">Dashboard</a></li>
+                <li><a href="{{ url_for('main.palpites') }}" class="{% if request.endpoint == 'main.palpites' %}active{% endif %}">Gerar Palpites</a></li>
+                <li><button id="btn-atualizar" class="btn btn-secondary">🔄 Atualizar Dados</button></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sistema de Análise +Milionária - Análise Por Posição</p>
+            <p>Dados obtidos da API oficial da Caixa Econômica Federal</p>
+        </div>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

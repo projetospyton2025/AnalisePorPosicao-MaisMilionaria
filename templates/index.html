@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - +Milionária{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>📊 Dashboard +Milionária</h2>
+    </div>
+    
+    <div class="stats-grid mb-3">
+        <div class="stat-item">
+            <div class="stat-label">Total de Concursos</div>
+            <div class="stat-value">{{ total_concursos }}</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-label">Números Disponíveis</div>
+            <div class="stat-value">01 a 50</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-label">Trevos Disponíveis</div>
+            <div class="stat-value">🍀 1 a 6</div>
+        </div>
+    </div>
+</div>
+
+<!-- Último Resultado -->
+<div class="card">
+    <div class="card-header">
+        <h2>🎯 Último Resultado</h2>
+    </div>
+    
+    <div id="ultimo-resultado-container">
+        {% if ultimo_resultado %}
+        <div class="ultimo-resultado">
+            <div class="concurso-info">
+                <strong>Concurso {{ ultimo_resultado.numero }}</strong> - {{ ultimo_resultado.dataApuracao }}
+            </div>
+            
+            <div>
+                <div style="font-weight: 600; margin-bottom: 10px;">Números Sorteados</div>
+                <div class="numeros-container">
+                    {% for numero in ultimo_resultado.listaDezenas %}
+                    <span class="numero">{{ numero }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="trevos-section">
+                <div class="trevos-label">Trevos da Sorte 🍀</div>
+                <div class="trevos-container">
+                    {% for trevo in ultimo_resultado.trevosSorteados %}
+                    <span class="trevo">🍀 {{ trevo }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="premio-info">
+                Estimativa Próximo Concurso<br>
+                <span class="premio-valor">
+                    R$ {{ "%.2f"|format(ultimo_resultado.valorEstimadoProximoConcurso or 0)|replace('.', ',') }}
+                </span>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center">Nenhum resultado disponível. Clique em "Atualizar Dados" para buscar.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Estatísticas dos Números -->
+<div class="card">
+    <div class="card-header">
+        <h2>📈 Estatísticas dos Números (01-50)</h2>
+    </div>
+    
+    <div id="stats-numeros-container">
+        <p class="text-center">Carregando estatísticas...</p>
+    </div>
+</div>
+
+<!-- Estatísticas dos Trevos -->
+<div class="card">
+    <div class="card-header">
+        <h2>🍀 Estatísticas dos Trevos (1-6)</h2>
+    </div>
+    
+    <div id="stats-trevos-container">
+        <p class="text-center">Carregando estatísticas...</p>
+    </div>
+</div>
+
+<!-- Faixas de Premiação -->
+<div class="card">
+    <div class="card-header">
+        <h2>🏆 Faixas de Premiação</h2>
+    </div>
+    
+    <table class="frequencia-table">
+        <thead>
+            <tr>
+                <th>Faixa</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1</strong></td>
+                <td>6 números + 2 trevos (Prêmio Principal)</td>
+            </tr>
+            <tr>
+                <td><strong>2</strong></td>
+                <td>6 números + 1 ou 0 trevos</td>
+            </tr>
+            <tr>
+                <td><strong>3</strong></td>
+                <td>5 números + 2 trevos</td>
+            </tr>
+            <tr>
+                <td><strong>4</strong></td>
+                <td>5 números + 1 ou 0 trevos</td>
+            </tr>
+            <tr>
+                <td><strong>5</strong></td>
+                <td>4 números + 2 trevos</td>
+            </tr>
+            <tr>
+                <td><strong>6</strong></td>
+                <td>4 números + 1 ou 0 trevos</td>
+            </tr>
+            <tr>
+                <td><strong>7</strong></td>
+                <td>3 números + 2 trevos</td>
+            </tr>
+            <tr>
+                <td><strong>8</strong></td>
+                <td>3 números + 1 trevo</td>
+            </tr>
+            <tr>
+                <td><strong>9</strong></td>
+                <td>2 números + 2 trevos</td>
+            </tr>
+            <tr>
+                <td><strong>10</strong></td>
+                <td>2 números + 1 trevo</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

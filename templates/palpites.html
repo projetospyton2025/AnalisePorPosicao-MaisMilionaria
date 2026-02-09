@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Gerar Palpites - +Milionária{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>🎲 Gerador de Palpites Inteligentes</h2>
+    </div>
+    
+    <p>Use as estatísticas para gerar palpites inteligentes baseados em diferentes estratégias.</p>
+    
+    <form id="form-palpite">
+        <div class="form-group">
+            <label class="form-label" for="estrategia">Estratégia</label>
+            <select name="estrategia" id="estrategia" class="form-select">
+                <option value="equilibrada">Equilibrada (Mix de frequentes e atrasados)</option>
+                <option value="agressiva">Agressiva (Mais frequentes)</option>
+                <option value="conservadora">Conservadora (Mais atrasados)</option>
+                <option value="mista">Mista (Variada)</option>
+                <option value="atrasados">Atrasados (Foco em atrasados)</option>
+                <option value="por_faixa">Por Faixa (Distribuição uniforme)</option>
+                <option value="combinacoes_trevos">Combinações de Trevos (Baseada em combinações frequentes)</option>
+            </select>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="form-group">
+                <label class="form-label" for="quantidade_numeros">Quantidade de Números</label>
+                <input type="number" name="quantidade_numeros" id="quantidade_numeros" 
+                       class="form-control" min="6" max="12" value="6">
+                <small class="stat-label">Mínimo: 6 | Máximo: 12</small>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="quantidade_trevos">Quantidade de Trevos 🍀</label>
+                <input type="number" name="quantidade_trevos" id="quantidade_trevos" 
+                       class="form-control" min="2" max="6" value="2">
+                <small class="stat-label">Mínimo: 2 | Máximo: 6</small>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label" for="quantidade_jogos">Quantidade de Jogos</label>
+            <input type="number" name="quantidade_jogos" id="quantidade_jogos" 
+                   class="form-control" min="1" max="10" value="1">
+        </div>
+        
+        <div class="stats-grid">
+            <button type="submit" class="btn btn-primary btn-block">
+                🎯 Gerar Palpite
+            </button>
+            
+            <button type="button" id="btn-sugerir-trevos" class="btn btn-secondary btn-block">
+                🍀 Sugerir Trevos Automaticamente
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Resultado -->
+<div id="palpite-resultado"></div>
+
+<!-- Informações sobre as Estratégias -->
+<div class="card">
+    <div class="card-header">
+        <h2>ℹ️ Sobre as Estratégias</h2>
+    </div>
+    
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-label"><strong>Equilibrada</strong></div>
+            <p>Combina números frequentes com atrasados, buscando um equilíbrio ideal.</p>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-label"><strong>Agressiva</strong></div>
+            <p>Foca nos números e trevos mais sorteados historicamente.</p>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-label"><strong>Conservadora</strong></div>
+            <p>Prioriza números e trevos que estão há mais tempo sem sair.</p>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-label"><strong>Mista</strong></div>
+            <p>Variação aleatória entre diferentes abordagens.</p>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-label"><strong>Atrasados</strong></div>
+            <p>Escolhe apenas os números com maior atraso.</p>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-label"><strong>Por Faixa</strong></div>
+            <p>Distribui os números uniformemente entre as faixas (01-10, 11-20, etc).</p>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-label"><strong>Combinações de Trevos</strong></div>
+            <p>Usa as combinações de trevos mais frequentes na história.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Dicas -->
+<div class="card">
+    <div class="card-header">
+        <h2>💡 Dicas Importantes</h2>
+    </div>
+    
+    <ul>
+        <li><strong>Os trevos são TÃO importantes quanto os números!</strong> Eles determinam a faixa de premiação.</li>
+        <li>Para ganhar o <strong>prêmio principal (Faixa 1)</strong>, é necessário acertar <strong>6 números + 2 trevos</strong>.</li>
+        <li>Jogos com mais números e trevos aumentam as chances, mas também custam mais.</li>
+        <li>Use o botão "Sugerir Trevos Automaticamente" para obter sugestões baseadas em estatísticas.</li>
+        <li>A estratégia "Combinações de Trevos" usa os pares de trevos mais sorteados juntos.</li>
+        <li>Nenhuma estratégia garante vitória - a loteria é sempre um jogo de probabilidades.</li>
+    </ul>
+</div>
+{% endblock %}
