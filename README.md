@@ -4,6 +4,33 @@ Sistema completo de análise estatística e geração de palpites inteligentes p
 
 ![+Milionária Logo](https://i.postimg.cc/DywMFvD1/mais-Milionaria.png)
 
+## 🎲 Dupla Sena - Modalidade Separada
+
+**IMPORTANTE:** A **DUPLA SENA** agora é uma **modalidade SEPARADA** com sua própria aplicação independente!
+
+- ✅ Aplicação independente em `app_duplasena.py`
+- ✅ Porta separada (5060 por padrão)
+- ✅ Banco de dados separado
+- ✅ Configuração independente
+
+📖 **[Veja a documentação completa da Dupla Sena →](DUPLASENA.md)**
+
+### Como Executar Cada Modalidade
+
+```bash
+# Executar +Milionária (porta 5059)
+python app.py
+# ou
+python run_maismilionaria.py
+
+# Executar Dupla Sena (porta 5060) - SEPARADAMENTE
+python app_duplasena.py
+# ou
+python run_duplasena.py
+```
+
+**Ambas podem rodar simultaneamente em portas diferentes!**
+
 ## 📋 Características
 
 ### O Diferencial da +Milionária
